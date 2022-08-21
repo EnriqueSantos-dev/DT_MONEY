@@ -61,7 +61,7 @@ export function Modal({ isOpen, setCloseModal, overlay }: Props) {
         category: data.category,
         value: Number(data.price),
         type: optionItem,
-        date: new Date().toDateString(),
+        date: new Date(),
       });
       setCloseModal(false);
       setOptionItem(undefined);

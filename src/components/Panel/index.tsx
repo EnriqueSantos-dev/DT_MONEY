@@ -6,7 +6,14 @@ import { Card } from "./components/Card";
 import style from "./style.module.scss";
 
 export function Panel() {
-  const { inputs, outputs } = useValuesContext();
+  const {
+    inputs,
+    outputs,
+    getTheLastInput,
+    getTheLastOutput,
+    getIntervalDateInputsOutputs,
+  } = useValuesContext();
+
   const panelRef = useRef<HTMLDivElement>(null);
 
   function scrolling() {
@@ -28,20 +35,23 @@ export function Panel() {
     <div className={style.panel} ref={panelRef} onScroll={scrolling}>
       <div className={style.container}>
         <Card
-          icon={<Arrow fill="#00B37E" size={26} />}
+          icon={<Arrow fill="#00B37E" size={32} />}
           value={inputs}
           type="Entradas"
+          alternativeText={`última entrada em ${getTheLastInput()}`}
         />
         <Card
-          icon={<Arrow fill="#F75A68" size={26} rotate />}
+          icon={<Arrow fill="#F75A68" size={32} rotate />}
           value={outputs}
           type="Saídas"
+          alternativeText={`última saída em ${getTheLastOutput()}`}
         />
         <Card
           icon={<Currency size={32} />}
           value={inputs - outputs}
           type="Total"
           variant="green"
+          alternativeText={`de ${getIntervalDateInputsOutputs()}`}
         />
       </div>
     </div>

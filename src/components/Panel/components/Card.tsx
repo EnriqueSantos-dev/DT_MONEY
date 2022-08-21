@@ -7,9 +7,10 @@ interface Props {
   icon: ReactNode;
   type: string;
   variant?: "green" | "dark";
+  alternativeText?: string;
 }
 
-export function Card({ value, icon, type, variant }: Props) {
+export function Card({ value, icon, type, variant, alternativeText }: Props) {
   return (
     <div
       className={style.card}
@@ -22,11 +23,23 @@ export function Card({ value, icon, type, variant }: Props) {
         <span>{type}</span>
         {icon}
       </div>
-      <div className={style.bottomCard}>{formatNumber(value)}</div>
+      <div className={style.bottomCard}>
+        <h3>{formatNumber(value)}</h3>
+        {alternativeText && (
+          <p
+            style={{
+              color: variant === "green" ? "#C4C4CC" : "#7c7c8a",
+            }}
+          >
+            {alternativeText}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
 
 Card.defaultProps = {
   variant: "dark",
+  alternativeText: "",
 };

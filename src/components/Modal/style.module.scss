@@ -1,0 +1,93 @@
+.warper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal {
+  position: absolute;
+  bottom: 0;
+
+  width: 100vw;
+  padding: 1.5rem;
+  border-radius: 1.25rem 1.25rem 0 0;
+
+  background: #202024;
+  box-shadow: 0px -4px 32px rgba(0, 0, 0, 0.8);
+
+  @media (min-width: 1000px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 535px;
+    height: fit-content;
+
+    border-radius: 0.375rem;
+  }
+}
+
+.modalHeader {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 160%;
+
+    color: #e1e1e6;
+
+    @media (min-width: 1000px) {
+      font-size: 24px;
+      line-height: 140%;
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  @media (min-width: 1000px) {
+    margin-top: 20px;
+  }
+}
+
+.typeItem {
+  margin-top: 24px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inputsInfos {
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.submitForm {
+  margin-top: 32px;
+
+  @media (min-width: 1000px) {
+    button {
+      height: 50px;
+    }
+  }
+}

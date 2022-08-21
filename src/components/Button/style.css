@@ -1,0 +1,15 @@
+.btn-option {
+  border: solid 1px #29292e;
+}
+.btn-option:focus {
+  border-color: #00875f;
+}
+
+.btn-option:hover {
+  filter: brightness(0.9);
+}
+
+.btn-option--active {
+  border-color: #00875f;
+  filter: brightness(0.9);
+}

@@ -1,0 +1,52 @@
+.buttonSearch {
+  width: 54px;
+  height: 54px;
+  padding: 1rem;
+  border-radius: 6px;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.75rem;
+
+  border: solid 1px #00b37e;
+  background: #202024;
+
+  span {
+    display: none;
+
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.625rem;
+    color: #00b37e;
+  }
+
+  cursor: pointer;
+
+  @media (min-width: 1000px) {
+    width: 147px;
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    span {
+      display: block;
+    }
+  }
+}
+
+.error {
+  border-color: #f75a68;
+
+  span {
+    color: #f75a68;
+  }
+
+  svg {
+    path {
+      fill: #f75a68;
+    }
+  }
+}

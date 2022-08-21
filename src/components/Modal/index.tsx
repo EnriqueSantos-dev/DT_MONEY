@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
 
@@ -46,6 +46,15 @@ export function Modal({ isOpen, setCloseModal, overlay }: Props) {
     resolver: yupResolver(schema),
     mode: "onChange",
   });
+
+  useEffect(() => {
+    const root = document.getElementById("root");
+    if (isOpen) {
+      root?.classList.toggle("no-scrolling");
+      return;
+    }
+    root?.classList.remove("no-scrolling");
+  }, [isOpen]);
 
   function clearClassListsButtons() {
     document

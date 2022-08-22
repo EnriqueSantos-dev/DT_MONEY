@@ -48,7 +48,7 @@ export function SearchTransaction({ lengthItems }: Props) {
       >
         <Input
           id="search-transaction"
-          placeholder="Busque por uma transação"
+          placeholder="Busque por nome ou data"
           type="text"
           {...register("searchTransaction")}
           error={errors.searchTransaction?.message}

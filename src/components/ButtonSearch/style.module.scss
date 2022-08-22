@@ -22,6 +22,11 @@
   }
 
   cursor: pointer;
+  transition: all 150ms ease;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
 
   @media (min-width: 1000px) {
     width: 147px;

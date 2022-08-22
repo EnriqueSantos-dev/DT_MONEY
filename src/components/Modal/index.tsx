@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
 
+import { v4 as uuid } from "uuid";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
@@ -47,25 +49,28 @@ export function Modal({ isOpen, setCloseModal, overlay }: Props) {
     mode: "onChange",
   });
 
-  useEffect(() => {
-    const root = document.getElementById("root");
-    if (isOpen) {
-      root?.classList.toggle("no-scrolling");
-      return;
-    }
-    root?.classList.remove("no-scrolling");
-  }, [isOpen]);
-
   function clearClassListsButtons() {
     document
       .querySelector(".btn-option--active")
       ?.classList.remove("btn-option--active");
   }
 
+  useEffect(() => {
+    const root = document.getElementById("root");
+    if (isOpen) {
+      root?.classList.add("no-scrolling");
+      setOptionItem(undefined);
+      clearClassListsButtons();
+      reset();
+      return;
+    }
+    root?.classList.remove("no-scrolling");
+  }, [isOpen]);
+
   function onSubmit(data: Inputs) {
     if (optionItem) {
       addItem({
-        id: "10",
+        id: uuid(),
         title: data.description,
         category: data.category,
         value: Number(data.price),
@@ -73,9 +78,6 @@ export function Modal({ isOpen, setCloseModal, overlay }: Props) {
         date: new Date(),
       });
       setCloseModal(false);
-      setOptionItem(undefined);
-      clearClassListsButtons();
-      reset();
     }
   }
 
@@ -85,18 +87,12 @@ export function Modal({ isOpen, setCloseModal, overlay }: Props) {
     }
     if (e.target === modalRef.current) {
       setCloseModal(false);
-      setOptionItem(undefined);
-      clearClassListsButtons();
-      reset();
     }
   }
 
   function closeModalOnkeydownEscape(e: KeyboardEvent) {
     if (e.key === "Escape") {
       setCloseModal(false);
-      setOptionItem(undefined);
-      clearClassListsButtons();
-      reset();
     }
   }
 

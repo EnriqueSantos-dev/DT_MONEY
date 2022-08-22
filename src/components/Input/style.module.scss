@@ -15,7 +15,8 @@
 
   transition: all 150ms ease;
 
-  &:focus {
+  &:focus,
+  &:hover {
     border-color: #00875f;
   }
 }

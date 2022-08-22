@@ -14,6 +14,10 @@ export function Panel() {
     getIntervalDateInputsOutputs,
   } = useValuesContext();
 
+  const lastInput = getTheLastInput();
+  const lastOutput = getTheLastOutput();
+  const intervalDateInputsOutputs = getIntervalDateInputsOutputs();
+
   const panelRef = useRef<HTMLDivElement>(null);
 
   function scrolling() {
@@ -38,20 +42,22 @@ export function Panel() {
           icon={<Arrow fill="#00B37E" size={32} />}
           value={inputs}
           type="Entradas"
-          alternativeText={`última entrada em ${getTheLastInput()}`}
+          alternativeText={lastInput ? `última entrada em ${lastInput}` : ""}
         />
         <Card
           icon={<Arrow fill="#F75A68" size={32} rotate />}
           value={outputs}
           type="Saídas"
-          alternativeText={`última saída em ${getTheLastOutput()}`}
+          alternativeText={lastOutput ? `última saída em ${lastOutput}` : ""}
         />
         <Card
           icon={<Currency size={32} />}
           value={inputs - outputs}
           type="Total"
           variant="green"
-          alternativeText={`de ${getIntervalDateInputsOutputs()}`}
+          alternativeText={
+            intervalDateInputsOutputs ? `de ${intervalDateInputsOutputs}` : ""
+          }
         />
       </div>
     </div>
